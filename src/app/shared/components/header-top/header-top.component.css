@@ -1,0 +1,15 @@
+div{
+    justify-content: center;
+}
+
+div, ul {
+  padding: 1px;
+}
+
+div , ul , li{
+    color:blueviolet;
+    list-style: none;
+}
+a{
+    list-style: none;
+}

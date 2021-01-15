@@ -1,0 +1,14 @@
+<mat-sidenav-container class="container-fluid" >
+
+    <!-- <mat-sidenav mode="side" [(opened)]="oppend">Sidenav
+       <app-header-side (click)="LoadOpend()">
+        </app-header-side>
+    </mat-sidenav> -->
+    <mat-sidenav-content>
+      <app-header-top>
+      </app-header-top>
+     <router-outlet></router-outlet>
+       <app-footer>
+      </app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

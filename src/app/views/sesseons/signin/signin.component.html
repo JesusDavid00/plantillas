@@ -1,0 +1,25 @@
+<!-- <img src="assets/imagen/Login.jpg" alt="status fatal errors"  class=" lockscreen-face"> -->
+ <mat-card >
+   <mat-card-content class="align" >
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <p class="text-muted m-0">Iniciar Sesión</p>
+    </div>
+    <form [formGroup]="Login" (ngSubmit)="submit()">
+            <mat-form-field>
+              <mat-label>Usuario:</mat-label>
+              <input type="text" matInput placeholder="Username" formControlName="Username">
+            </mat-form-field>
+
+            <mat-form-field >
+              <mat-label>Password:</mat-label>
+              <input type="password" matInput placeholder="Password" formControlName="Password">
+            </mat-form-field>
+
+            <samp color="warn" *ngIf="!Incorrecto">Usuario o/y contraseñas incorectas</samp>
+          <button mat-raised-button color="warn" type="submit" [disabled]="Login.invalid">Iniciar</button>
+    </form>
+      <mat-spinner *ngIf="showSpinner"></mat-spinner>
+    </mat-card-content>
+ </mat-card>
+
+

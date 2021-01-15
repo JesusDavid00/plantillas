@@ -1,0 +1,17 @@
+mat-card{
+    display: flex;
+    justify-content: center;
+}
+
+mat-form-field{
+    align-content: flex-end;
+    display: inline;
+}
+
+.align{
+    width: 30%;
+    height: 0 auto;
+}
+
+
+
