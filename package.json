@@ -24,6 +24,7 @@
     "@angular/router": "~9.1.11",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "angular-in-memory-web-api": "^0.11.0",
     "bootstrap": "^5.0.0-beta1",
     "ng-snotify": "^9.0.1",
     "rxjs": "~6.5.4",

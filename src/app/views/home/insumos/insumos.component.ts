@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ItemsElement } from 'src/app/shared/interfaces/items-element';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { InsumoFormComponent } from '../modals/insumo-form/insumo-form.component';
+import { Username } from 'src/app/shared/interfaces/username';
 
 
 @Component({
@@ -13,15 +14,20 @@ import { InsumoFormComponent } from '../modals/insumo-form/insumo-form.component
 export class InsumosComponent implements OnInit {
 
   columnsToDisplay:string[] = ['ID','name','lastName','age','address','Actions'];
-  public  myDataArray = ELEMENT_DATA;
+  public  myDataArray ;
   public  numero:        number = 1;
   public  nombre:        string;
   public  Datos:         string;
   public  DatosPersonal: FormGroup;
 
-  constructor(public dialog:  MatDialog) { }
+  constructor(public dialog:    MatDialog,) { }
 
   ngOnInit(): void {}
+
+
+  currentData(){
+    
+  }
 
   opendFormDialog(row:  ItemsElement = {
     ID:        null,

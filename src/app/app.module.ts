@@ -15,6 +15,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient , HttpClientModule} from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './shared/services/in-memory-data.service';
 
 
 /* export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -30,6 +32,14 @@ import { HttpClient , HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     SnotifyModule,
     HttpClientModule,
+    HttpClientModule,
+
+// The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+// and returns simulated server responses.
+// Remove it when a real server is ready to receive requests.
+  HttpClientInMemoryWebApiModule.forRoot(
+  InMemoryDataService, { dataEncapsulation: false }
+   ),
   
     /* TranslateModule.forRoot({
       loader: {
