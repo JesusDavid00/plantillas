@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
   public SesionActiva: boolean    = false;
   public Incorrecto:   boolean    = true;
-  public showSpinner:  boolean    = false; 
+  public showSpinner:  boolean    = false;
   public Login:        FormGroup;
- 
+
 
   constructor(private router:   Router) {
       this.Login = new FormGroup({
@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
   submit(){
       this.showSpinner
       console.log("Estamos bajo ataque enemigo, no mueran por si mueron los mato", this.Login.value)
-      if(this.Login.value.Username == "alvearjd" && this.Login.value.Password == "Using¿¿System!!Collections!!Generic22Clear??Password24??1998"){
+      if(this.Login.value.Username == "alvearjd" && this.Login.value.Password == "$dkjs.3tr1ng?cls"){
         this.showSpinner = true
         setTimeout(() =>{
           console.log("Bienvenido!" , this.Login.value.Username)
@@ -34,12 +34,12 @@ export class SigninComponent implements OnInit {
           this.SesionActiva = true
           this.Incorrecto  = false
         }, 5000)
-       
+
       }else{
         console.log("Incorrecto!" , this.SesionActiva)
         this.SesionActiva = false
         this.Incorrecto  = false
-        
+
       }
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'src/assets/User.json'
+  apiURL: 'api/elemntData'
 };
 
 /*

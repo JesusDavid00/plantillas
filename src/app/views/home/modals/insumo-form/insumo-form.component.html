@@ -2,25 +2,25 @@
 <form [formGroup]="DatosPersonal"  (submit)="onSubmit()">
        <div  fxLayout="row" fxLayoutAlign="space-around center"  >
            <mat-form-field fxFlex="40">
-             <input type="text" matInput placeholder="What is your name?" formControlName="name" >  
+             <input type="text" matInput placeholder="What is your name?" formControlName="name" >
           </mat-form-field>
 
            <mat-form-field fxFlex="40">
-             <input type="text" matInput placeholder="What is your last name?"  formControlName="lastName" >  
+             <input type="text" matInput placeholder="What is your last name?"  formControlName="lastName" >
           </mat-form-field>
       </div>
 
       <div  fxLayout="row" fxLayoutAlign="space-around center" >
            <mat-form-field fxFlex="40">
-             <input type="text" matInput placeholder="What is your age?"  formControlName="age" >  
+             <input type="text" matInput placeholder="What is your age?"  formControlName="age" >
            </mat-form-field>
 
            <mat-form-field fxFlex="40">
-             <input type="text" matInput placeholder="What is your address?"  formControlName="address" >  
+             <input type="text" matInput placeholder="What is your address?"  formControlName="address" >
            </mat-form-field>
        </div>
        <div fxLayout="row" fxLayoutAlign="end end" >
-         <button mat-raised-button  color="warn" type="button">Create</button>
-         <button mat-raised-button  color="primary" type="button" (click)="closeDialog()" >close</button>
-       </div> 
+         <button mat-raised-button  color="warn"  type="submit">Created</button>
+         <button mat-raised-button  color="primary" type="button" (click)="closeDialog()">Close</button>
+       </div>
    </form>

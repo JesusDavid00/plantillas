@@ -4,6 +4,9 @@ import { ItemsElement } from 'src/app/shared/interfaces/items-element';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { InsumoFormComponent } from '../modals/insumo-form/insumo-form.component';
 import { Username } from 'src/app/shared/interfaces/username';
+import { UsernameService } from 'src/app/shared/services/username.service';
+import { IElemento } from 'src/app/shared/interfaces/ielemento';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -14,19 +17,23 @@ import { Username } from 'src/app/shared/interfaces/username';
 export class InsumosComponent implements OnInit {
 
   columnsToDisplay:string[] = ['ID','name','lastName','age','address','Actions'];
-  public  myDataArray ;
+  public elementData:    ItemsElement[];
   public  numero:        number = 1;
   public  nombre:        string;
   public  Datos:         string;
   public  DatosPersonal: FormGroup;
 
-  constructor(public dialog:    MatDialog,) { }
+  constructor(public dialog:    MatDialog,
+              private apiService: UsernameService,
+              private snack:      MatSnackBar ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.currentData();
+  }
 
 
   currentData(){
-    
+    this.apiService.GetDostos().subscribe(response => this.elementData = response)
   }
 
   opendFormDialog(row:  ItemsElement = {
@@ -36,22 +43,23 @@ export class InsumosComponent implements OnInit {
     age:       null,
     address:   '',
   }): void{
-     const dialogRef  = this.dialog.open(InsumoFormComponent, {
-      width: '700px',
-      data: row
+  const dialogRef  = this.dialog.open(InsumoFormComponent, {
+    width: '700px',
+    data: row
   });
-  dialogRef.afterClosed().subscribe(result => {
+  dialogRef.afterClosed().subscribe((result: ItemsElement) => {
+    if(result){
+      this.apiService.Post(result).subscribe(datos => { this.elementData.push(datos)})
+      console.log("Datos Formulario user: ",result);
+      this.snack.open("DatosResult: '{{result}}'", "OK" , {duration: 5000});
+      this.currentData();
+    }else{
+      this.snack.open("No hay datos para mostrar: '{{result}}'", "OK" , {duration: 5000});
+    }
     console.log('The dialog was closed');
-  })
+  });
  }
-
  deleteItem(){
    console.log("boooooo");
  }
 }
-const ELEMENT_DATA: ItemsElement[]=[
-    {ID: 1 ,name:'Jesus David', lastName: 'alvear', age:21 , address: 'cra 24'},
-    {ID: 2 ,name:'Germinton Antonio' , lastName: 'alvear', age:20 , address: 'cra 23'},
-    {ID: 3 ,name:'Jose Carlos' , lastName: 'Gutierez', age:22 , address: 'cra 29'},
-    {ID: 4 ,name:'Jhonatan Andres' , lastName: 'Lopez', age:20 , address: 'cra 60'}
-];
